@@ -1,9 +1,9 @@
 /*: Outline
-
+ 
  # Iterating over a Dictionary
-
+ 
  ### Readings associated with this lab
-
+ 
  * [Dictionary](https://github.com/learn-co-curriculum/swift-dictionary-readme)
  * [Iterating over a Dictionary](https://github.com/learn-co-curriculum/swift-dictionaryIteration-readme)
  * [Dictionary - Methods](https://github.com/learn-co-curriculum/swift-dictionaryMethods-readme)
@@ -13,6 +13,7 @@
  */
 // write your code here
 
+var starWarsHeroes = ["Luke Skywalker", "Princess Leia", "Han Solo", "Rey"]
 
 
 
@@ -21,7 +22,7 @@
  */
 // write your code here
 
-
+var starWarsVillains = ["Darth Vader", "Emperor Palpatine"]
 
 
 /*: question3
@@ -29,7 +30,7 @@
  */
 // write your code here
 
-
+var starWarsDroids = ["R2-D2", "C-3P0", "IG-88", "BB-8"]
 
 
 /*: question4
@@ -37,7 +38,7 @@
  */
 // write your code here
 
-
+starWarsVillains.append("Kylo Ren")
 
 
 /*: question5
@@ -45,7 +46,17 @@
  */
 // write your code here
 
+for driods in starWarsDroids{
+    
+    if driods == "IG-88"{
+        
+        let index = starWarsDroids.indexOf(driods)
+        
+        starWarsDroids.removeAtIndex(index!)
+    }
+}
 
+print(starWarsDroids)
 
 
 /*: question6
@@ -53,7 +64,9 @@
  */
 // write your code here
 
-
+var starWarsCharacters = [ "Heroes": starWarsHeroes,
+                           "Villains": starWarsVillains,
+                           "Droids": starWarsDroids]
 
 
 /*: question7
@@ -61,6 +74,7 @@
  */
 // write your code here
 
+var starWarsGangsters = ["Watto", "Jabba the Hutt"]
 
 
 
@@ -69,7 +83,7 @@
  */
 // write your code here
 
-
+starWarsCharacters["Gangsters"] = starWarsGangsters
 
 
 /*: question9
@@ -77,15 +91,17 @@
  */
 // write your code here
 
-
-
+for keys in starWarsCharacters.keys{
+    
+    print(keys)
+}
 
 /*: question10
  ### 10. Just for good measure, print the number of keys in the dictionary to the console using the `count` method. Do you see `4` printed to the console?
  */
 // write your code here
 
-
+print(starWarsCharacters.count)
 
 
 /*: question11
@@ -93,7 +109,13 @@
  */
 // write your code here
 
-
+if starWarsCharacters.isEmpty{
+    
+    print("The dictionary is empty!")
+}else{
+    
+    print("There are \(starWarsCharacters.count) items in the dictionary.")
+}
 
 
 /*: question12
@@ -101,13 +123,17 @@
  */
 // write your code here
 
-
+var starWarsJedi = ["Yoda", "Obi-Wan Kenobi", "Mace Windu"]
 
 
 /*: question13
  ### 13. Add the variable `starWarsJedi` to the `starWarsCharacter` dictionary using the key "Jedi". Use the `updateValue(_:forKey:)` method to do this. If a new key was added, print "Added Jedi key" to the console; otherwise, print "Updated Jedi key" to the console.
  */
 // write your code here
+
+if starWarsCharacters.updateValue(starWarsJedi, forKey: "Jedi") == nil{
+    print("Updated Jedi key")
+}
 
 
 
@@ -117,21 +143,31 @@
  */
 // write your code here
 
-
+if starWarsCharacters.removeValueForKey("Bounty Hunters") == nil{
+    
+    print("Bount Hunters did not exist")
+}else{
+    print("Removed Bounty Hunters")
+}
 
 
 /*: question15
  ### 15. We forgot to add a really cool Jedi to the list of Jedi: Aayla Secura. Unfortunately, the code below is broken: It doesn't appear to be adding Aayla Secura to the array. Can you fix it so that it does? (The code has been commented out, since it won't even compile until you've answered the questions above. Start by uncommenting the code, but that's not all you need to fix!)
-
+ 
  After you've fixed the error, print out the contents of the "Jedi" key in `starWarsCharacters` to make sure your code works.
  */
 
-/* Start by uncommenting this block of code
- if var jedi = starWarsCharacters["Jedi"] {
- jedi.append("Aayla Secura")
- }
- */
+/* Start by uncommenting this block of code*/
 
+ if var jedi = starWarsCharacters["Jedi"] {
+    
+ jedi.append("Aayla Secura")
+
+    starWarsCharacters["Jedi"] = jedi
+    
+ }
+ 
+print(starWarsCharacters["Jedi"])
 
 
 
@@ -139,13 +175,15 @@
  ### 16. We want to print out the names of our _Star Wars_ heroes line-by-line. Unfortunately, the code below isn't working correctly -- nothing gets printed! Can you fix it so that our heroes are printed out? (Again, the code has been commented out so that it doesn't interfere with earlier questions until they have been completed. Start by uncommenting the code, but there's still another bug!)
  */
 
-/*
- if let heroes = starWarsCharacters["Heros"] {
- for hero in heroes {
- print(hero)
- }
- }
- */
+
+if let heroes = starWarsCharacters["Heroes"] {
+    
+    for hero in heroes {
+        
+        print(hero)
+    }
+}
+
 
 
 
